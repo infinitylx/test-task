@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Edit author</h1>
+<form action="{{ url_for('edit_author', author_id=author.id) }}" method="POST">
+<input type="text" name="name" value="{{ author.name }}"/>
+<input type="hidden" value="{{ author.id }}" />
+<button type="submit" class="btn">Save</button>
+</form>
+{% endblock %}

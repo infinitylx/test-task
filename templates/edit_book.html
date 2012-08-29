@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Edit book</h1>
+<form action="{{ url_for('edit_book', book_id=book.id) }}" method="POST">
+<select name="author" multiple="multiple">
+    {% for a in authors %}
+        <option value='{{ a.id }}' {% if a in book.authors %} selected=selected{% endif %}>{{ a.name }}</option>
+    {% endfor %}
+</select>
+<input type="text" name="title" value="{{ book.title }}"/>
+<input type="hidden" name="book_id" value="{{ book.id }}"/>
+<button type="submit" class="btn">Save</button>
+</form>
+{% endblock %}

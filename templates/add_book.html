@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add new book</h1>
+<form action="{{ url_for('add_book') }}" method="POST">
+<select name="author">
+    {% for a in authors %}
+        <option value='{{ a.id }}'>{{ a.name }}</option>
+    {% endfor %}
+</select>
+<input type="text" name="title"/>
+<button type="submit" class="btn">Add</button>
+</form>
+{% endblock %}

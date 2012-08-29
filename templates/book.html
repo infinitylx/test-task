@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if book %}
+    <h2>Book</h2>
+    <p><a href='{{ url_for('show_book', book_id=book.id) }}'>{{ book.title }}</a>&nbsp;<a href='{{ url_for('edit_book', book_id=book.id) }}'>Edit</a></p>
+{% else %}
+    <h2>Books</h2>
+    <ul>
+    {% for b in books %}
+    <li><a href='{{ url_for('show_book', book_id=b.id) }}'>{{ b.title }}</a>&nbsp;<a href='{{ url_for('edit_book', book_id=b.id) }}'>Edit</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+<p>Add new <a href="{{ url_for('add_book') }}">Book</a></p>
+{% endblock %}

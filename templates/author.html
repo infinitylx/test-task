@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if author %}
+<h2>Author:</h2>
+<p><a href='{{ url_for('show_authors', author_id=author.id) }}'>{{ author.name }}</a>&nbsp;<a href='{{ url_for('edit_author', author_id=author.id) }}'>Edit</a></p>
+{% else %}
+<h2>Authors:</h2>
+<ul>
+{% for a in authors %}
+<li><a href='{{ url_for('show_authors', author_id=a.id) }}'>{{ a.name }}</a>&nbsp;<a href='{{ url_for('edit_author', author_id=a.id) }}'>Edit</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+<p>Add new <a href="{{ url_for('add_author') }}">Author</a></p>
+{% endblock %}
